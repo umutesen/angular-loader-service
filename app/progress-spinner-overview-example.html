@@ -1,5 +1,3 @@
-Spinner:
-<mat-spinner diameter="50"></mat-spinner>
-<br>
-Progress Bar:
-<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+<mat-spinner [diameter]="50" *ngIf="showSpinner"></mat-spinner>
+
+  <button mat-raised-button color="primary" (click)="doWork()">Do Work</button>
