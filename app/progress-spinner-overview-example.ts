@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpinnerService } from './spinner.service';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'progress-spinner-overview-example',
@@ -20,13 +21,15 @@ export class ProgressSpinnerOverviewExample implements OnInit {
 
   doWork() {
 
-    this.httpClient.get<any>('https://www.google.com').subscribe(
-      success => {
-        alert(1);
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    this.httpClient.get<any>('http://dummy.restapiexample.com/api/v1/employees')
+      .pipe(map((result) => result))
+      .subscribe(
+        success => {
+          alert(1);
+        },
+        error => {
+          console.error(error);
+        }
+      );
   }
 }
